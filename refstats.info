@@ -1,0 +1,7 @@
+; $Id$
+
+name = Refstats
+version = 7.x-1.x-dev
+description = Custom module for RefStats site
+package = Stanford
+core = 7.x

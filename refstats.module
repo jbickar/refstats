@@ -1,0 +1,57 @@
+<?php
+//$Id$
+
+// kpr($form);
+
+function refstats_form_alter(&$form, &$form_state, $form_id) {
+//  kpr($form);
+//  kpr($form_state);
+}
+
+function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
+//  $form_state['redirect'] = url('node/add/ref-txn');
+//  kpr($form_state);
+  //tweak input field widths
+  $form['field_ref_txn_dir_person']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_dir_person']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_dir_phone']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_dir_phone']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_dir_email']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_dir_email']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_dir_chat']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_dir_chat']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_dir_mail']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_dir_mail']['und'][0]['value']['#maxlength'] = 2;
+
+  $form['field_ref_txn_ref_person']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_ref_person']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_ref_phone']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_ref_phone']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_ref_email']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_ref_email']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_ref_chat']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_ref_chat']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_ref_mail']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_ref_mail']['und'][0]['value']['#maxlength'] = 2;
+
+  $form['field_ref_txn_tech_person']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_tech_person']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_tech_phone']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_tech_phone']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_tech_email']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_tech_email']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_tech_chat']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_tech_chat']['und'][0]['value']['#maxlength'] = 2;
+  $form['field_ref_txn_tech_mail']['und'][0]['value']['#size'] = 2;
+  $form['field_ref_txn_tech_mail']['und'][0]['value']['#maxlength'] = 2;
+
+  // see http://drupal.org/node/1074616#comment-4218548 for source
+  $form['actions']['submit']['#submit'][] = 'refstats_custom_ref_txn_submit';
+//  kpr($form);
+}
+
+function refstats_custom_ref_txn_submit(&$form, $form_state) {
+//  kpr($form_state);
+// not working as of 04.14.11 - need to ask on IRC
+  $form_state['redirect'] = url('node/add/ref-txn');
+}
