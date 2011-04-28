@@ -4,11 +4,23 @@
 // kpr($form);
 
 function refstats_form_alter(&$form, &$form_state, $form_id) {
-//  kpr($form);
-//  kpr($form_state);
+  if($form_id == 'ref_txn_node_form') {
+//    kpr($form_state);
+//    dpm($form_id);
+    //kpr($form_state);
+    // see http://drupal.org/node/1074616#comment-4218548 for source
+    $form['actions']['submit']['#submit'][] = 'refstats_custom_ref_txn_submit';
+//    kpr($form);
+  }
 }
 
+/*
+ * Implementation of hook_form_FORM_ID_alter().
+ */
 function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
+  // add the click-to-increment functionality
+  drupal_add_js(drupal_get_path('module', 'refstats') .'/js/jquery.cookie.js');
+  drupal_add_js(drupal_get_path('module', 'refstats') .'/js/refstats.js');
 //  $form_state['redirect'] = url('node/add/ref-txn');
 //  kpr($form_state);
   //tweak input field widths
@@ -45,13 +57,42 @@ function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
   $form['field_ref_txn_tech_mail']['und'][0]['value']['#size'] = 2;
   $form['field_ref_txn_tech_mail']['und'][0]['value']['#maxlength'] = 2;
 
-  // see http://drupal.org/node/1074616#comment-4218548 for source
-  $form['actions']['submit']['#submit'][] = 'refstats_custom_ref_txn_submit';
+  // Tooltips on hover
+  $form['field_ref_txn_dir_person']['und']['#prefix'] = '<div id="field-ref-txn-dir-person-add-more-wrapper" title="Directional/In-Person">';
+  $form['field_ref_txn_dir_phone']['und']['#prefix'] = '<div id="field-ref-txn-dir-phone-add-more-wrapper" title="Directional/Telephone">';
+  $form['field_ref_txn_dir_email']['und']['#prefix'] = '<div id="field-ref-txn-dir-email-add-more-wrapper" title="Directional/E-mail">';
+  $form['field_ref_txn_dir_chat']['und']['#prefix'] = '<div id="field-ref-txn-dir-chat-add-more-wrapper" title="Directional/IM or Chat">';
+  $form['field_ref_txn_dir_mail']['und']['#prefix'] = '<div id="field-ref-txn-dir-mail-add-more-wrapper" title="Directional/Mail">';
+
+  $form['field_ref_txn_ref_person']['und']['#prefix'] = '<div id="field-ref-txn-ref-person-add-more-wrapper" title="Reference/In-Person">';
+  $form['field_ref_txn_ref_phone']['und']['#prefix'] = '<div id="field-ref-txn-ref-phone-add-more-wrapper" title="Reference/Telephone">';
+  $form['field_ref_txn_ref_email']['und']['#prefix'] = '<div id="field-ref-txn-ref-email-add-more-wrapper" title="Reference/E-mail">';
+  $form['field_ref_txn_ref_chat']['und']['#prefix'] = '<div id="field-ref-txn-ref-chat-add-more-wrapper" title="Reference/IM or Chat">';
+  $form['field_ref_txn_ref_mail']['und']['#prefix'] = '<div id="field-ref-txn-ref-mail-add-more-wrapper" title="Reference/Mail">';
+
+  $form['field_ref_txn_tech_person']['und']['#prefix'] = '<div id="field-ref-txn-tech-person-add-more-wrapper" title="Technical Assistance/In-Person">';
+  $form['field_ref_txn_tech_phone']['und']['#prefix'] = '<div id="field-ref-txn-tech-phone-add-more-wrapper" title="Technical Assistance/Telephone">';
+  $form['field_ref_txn_tech_email']['und']['#prefix'] = '<div id="field-ref-txn-tech-email-add-more-wrapper" title="Technical Assistance/E-mail">';
+  $form['field_ref_txn_tech_chat']['und']['#prefix'] = '<div id="field-ref-txn-tech-chat-add-more-wrapper" title="Technical Assistance/IM or Chat">';
+  $form['field_ref_txn_tech_mail']['und']['#prefix'] = '<div id="field-ref-txn-tech-mail-add-more-wrapper" title="Technical Assistance/Mail">';
+
+  // Change text of "select a value"
+  $form['field_ref_txn_tax_branch']['und']['#options']['_none'] = 'Select a branch or unit';
+  $form['field_ref_txn_tax_sp']['und']['#options']['_none'] = 'Select a service point';
+
+  $form['actions']['reset'] = array(
+    '#type' => 'button',
+    '#value' => t('Reset'),
+    '#weight' => 10,
+    '#prefix' => '<span class="element-hidden" id="reset-button-wrapper">',
+    '#suffix' => '</span>',
+    '#attributes' => array('onclick' => 'this.form.reset(); return false;'),
+  );
 //  kpr($form);
 }
 
-function refstats_custom_ref_txn_submit(&$form, $form_state) {
+function refstats_custom_ref_txn_submit(&$form, &$form_state) {
+// the reason this wasn't working is that I failed to pass $form_state by reference
 //  kpr($form_state);
-// not working as of 04.14.11 - need to ask on IRC
-  $form_state['redirect'] = url('node/add/ref-txn');
+  $form_state['redirect'] = 'add/reference-transaction';
 }
