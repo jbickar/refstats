@@ -16,16 +16,16 @@
 		});
 	});
 
-/////////////////////////////////////////
-// Show the Reset button if JS is enabled
-/////////////////////////////////////////
+////////////////////////////////////////////
+// Show the Reset button if JS is enabled //
+////////////////////////////////////////////
   $(document).ready(function() {
     $("#reset-button-wrapper").toggleClass("element-hidden");
   });
 
-/////////////////////////////////////////////////
-// Get the cookies and set the select list values
-/////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// Get the cookies and set the select list values //
+////////////////////////////////////////////////////
   $(document).ready(function() {
     if($.cookie('refstats-branch')) {
       var refstatsBranch = $.cookie('refstats-branch');
@@ -37,9 +37,9 @@
     }
   });
 
-//////////////////
-// Set the cookies
-//////////////////
+/////////////////////
+// Set the cookies //
+/////////////////////
   $(document).ready(function() {
     $('#edit-submit').click(function(){
 			$.cookie('refstats-branch', $("#edit-field-ref-txn-tax-branch-und").val(), {
@@ -52,6 +52,39 @@
 			});
 		});
   });
+
+////////////////
+// Pop it up //
+///////////////
+	$(document).ready(function() {
+	  var profiles = {
+     refstatsPopup:
+       {
+         height:650,
+         width:400,
+         toolbar:0,
+         scrollbars:1,
+         status:0,
+         resizable:0,
+         left:500,
+         top:0,
+//         not working
+//         onUnload:refstatsNopopup
+       },
+     };
+
+		function refstatsNopopup() {
+			$.cookie('refstats-popup', null);
+		};
+
+     $(".popupwindow").popupwindow(profiles);
+		 $(".popupwindow").click(function() {
+			 $.cookie('refstats-popup', 1, {
+				 expires: 1,
+				 secure: true
+			 });
+		 });
+   });
 
 
 /*

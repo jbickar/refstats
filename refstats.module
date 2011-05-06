@@ -20,6 +20,7 @@ function refstats_form_alter(&$form, &$form_state, $form_id) {
 function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
   // add the click-to-increment functionality
   drupal_add_js(drupal_get_path('module', 'refstats') .'/js/jquery.cookie.js');
+  drupal_add_js(drupal_get_path('module', 'refstats') .'/js/jquery.popupwindow.js');
   drupal_add_js(drupal_get_path('module', 'refstats') .'/js/refstats.js');
 //  $form_state['redirect'] = url('node/add/ref-txn');
 //  kpr($form_state);
