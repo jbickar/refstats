@@ -1,0 +1,49 @@
+/*
+ * Popup window
+ */
+
+body {
+  font-size: x-small;
+}
+#page-wrapper {
+  margin-top: -20px;
+}
+#header, #breadcrumb, #page-title, #sidebar-first {
+  display: none;
+}
+
+.form-item-field-ref-txn-datetime-und-0-value label {
+  display: none;
+}
+
+.form-item-field-ref-txn-tax-branch-und label {
+  display: none;
+}
+
+.form-item-field-ref-txn-tax-sp-und label {
+  display: none;
+}
+
+.form-item-field-ref-txn-tax-patron-und label {
+  display: none;
+}
+
+.field-type-taxonomy-term-reference {
+  margin: -10px 0 0 0;
+}
+
+#edit-field-ref-txn-tax-branch {
+  margin: 0;
+}
+
+#node_ref_txn_form_group_ref_txn_dir {
+  margin-top: -10px;
+}
+
+#node_ref_txn_form_group_ref_txn_dir .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_ref .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_tech .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_docs .fieldset-wrapper {
+  padding-top: 9px;
+}
+
+#node_ref_txn_form_group_ref_txn_dir, #node_ref_txn_form_group_ref_txn_ref, #node_ref_txn_form_group_ref_txn_tech, #node_ref_txn_form_group_ref_txn_docs {
+  padding-bottom: 0;
+}
