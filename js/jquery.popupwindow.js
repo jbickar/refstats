@@ -61,23 +61,32 @@ jQuery.fn.popupwindow = function(p)
 		parameters = "location=" + settings.location + ",menubar=" + settings.menubar + ",height=" + settings.height + ",width=" + settings.width + ",toolbar=" + settings.toolbar + ",scrollbars=" + settings.scrollbars  + ",status=" + settings.status + ",resizable=" + settings.resizable + ",left=" + settings.left  + ",screenX=" + settings.left + ",top=" + settings.top  + ",screenY=" + settings.top;
 		
 		jQuery(this).bind("click", function(){
-			var name = settings.createnew ? "PopUpWindow" + index : "PopUpWindow";
+//			var name = settings.createnew ? "PopUpWindow" + index : "PopUpWindow";
+      var name = "RefStatsPopup";
 			winObj = window.open(this.href, name, parameters);
-			
+
 			if (settings.onUnload) {
 				// Incremental check for window status
-				// Attaching directly to window.onunlaod event causes invoke when document within window is reloaded
+				// Attaching directly to window.onunload event causes invoke when document within window is reloaded
 				// (i.e. an inner refresh)
 				unloadInterval = setInterval(function() {
 					if (!winObj || winObj.closed) {
 						clearInterval(unloadInterval);	
-						settings.onUnload.call($(this));
+						// settings.onUnload.call($(this));
+						// undefined function error with the above line - jbickar
+						settings.onUnload.call(this);
 					}
 				},500);
 			}
 			
 			winObj.focus();
-			
+
+			//give it the popup stylesheet - jbickar
+      //jQuery(winObj.document).find('body').addClass("refstats-popup");
+//      winObj.alert(parameters);  //works
+//      winObj.document.find('head').append('<link rel="stylesheet" href="/sites/all/modules/custom/refstats/css/popup.css" type="text/css" />');
+      //jQuery(winObj.document).alert('hello world!');
+//      jQuery(winObj.document).find('head').append('<link rel="stylesheet" href="/sites/all/modules/custom/refstats/css/popup.css" type="text/css" />');
 			return false;
 		});
 	});
