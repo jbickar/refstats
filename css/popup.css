@@ -4,12 +4,34 @@
 
 body {
   font-size: x-small;
+  width: 330px;
+  max-width: 330px;
+  background-color: #EAF1F3;
 }
+
+fieldset legend {
+  display: none;
+}
+
 #page-wrapper {
   margin-top: -20px;
+  max-width: 330px;
 }
-#header, #breadcrumb, #page-title, #sidebar-first {
+
+#page {
+  max-width: 330px;
+}
+
+#header, #breadcrumb, #page-title, #sidebar-first, #admin-menu, #footer-wrapper {
   display: none;
+}
+
+#node_ref_txn_form_group_ref_txn_ref label, #node_ref_txn_form_group_ref_txn_tech label, #node_ref_txn_form_group_ref_txn_docs label {
+  display: none;
+}
+
+.field-type-taxonomy-term-reference select {
+  font-size: 9px;
 }
 
 .form-item-field-ref-txn-datetime-und-0-value label {
@@ -33,11 +55,7 @@ body {
 }
 
 #edit-field-ref-txn-tax-branch {
-  margin: 0;
-}
-
-#node_ref_txn_form_group_ref_txn_dir {
-  margin-top: -10px;
+  margin: -10px 0 0 0;
 }
 
 #node_ref_txn_form_group_ref_txn_dir .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_ref .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_tech .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_docs .fieldset-wrapper {
@@ -45,5 +63,16 @@ body {
 }
 
 #node_ref_txn_form_group_ref_txn_dir, #node_ref_txn_form_group_ref_txn_ref, #node_ref_txn_form_group_ref_txn_tech, #node_ref_txn_form_group_ref_txn_docs {
+  width: 250px;
   padding-bottom: 0;
+  margin-top: -10px;
+}
+
+#node_ref_txn_form_group_ref_txn_dir {
+  margin-top: -20px;
+}
+
+.popup-row-label {
+  float: left;
+  width: 60px;
 }

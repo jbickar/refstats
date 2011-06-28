@@ -60,16 +60,16 @@
 	  var profiles = {
      refstatsPopup:
        {
-         height:480,
-         width:340,
+         height:400,
+         width:300,
          toolbar:0,
          scrollbars:0,
          status:0,
-         resizable:0,
-         left:500,
+         resizable:1,
+         left:720,
          top:0,
 //         not working
-         onUnload:refstatsNopopup
+//         onUnload:refstatsNopopup
        },
      };
 
@@ -101,17 +101,21 @@
     }
   });
 
-///////////////////////////////////////
-// Get the parameter for the popup window
+//////////////////////////////////////////////////////////
+// Style the popup window (based on the value of its name)
 // working as of 09 Jun 2011
-///////////////////////////////////////
-
+//////////////////////////////////////////////////////////
   $(document).ready(function() {
     var refstatsPopup = window.name;
 //    alert(refstatsPopup);
     if(refstatsPopup == "RefStatsPopup"){
 //      alert('hey ma, it works!');
-      $('head').append('<link rel="stylesheet" href="/sites/all/modules/custom/refstats/css/popup.css" type="text/css" />')
+      $('head').append('<link rel="stylesheet" href="/sites/all/modules/custom/refstats/css/popup.css" type="text/css" />');
+      $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">');
+      $('#node_ref_txn_form_group_ref_txn_dir').prepend('<div class="popup-row-label">Directional</div>');
+      $('#node_ref_txn_form_group_ref_txn_ref').prepend('<div class="popup-row-label">Reference</div>');
+      $('#node_ref_txn_form_group_ref_txn_tech').prepend('<div class="popup-row-label">Technical</div>');
+      $('#node_ref_txn_form_group_ref_txn_docs').prepend('<div class="popup-row-label">Docs</div>');
     }
   });
 
