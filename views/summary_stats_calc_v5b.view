@@ -1,0 +1,1086 @@
+<?php
+$view = new view;
+$view->name = 'summary_stats_calc_v5b';
+$view->description = 'Base table plus xls export attachment plus views_calc display';
+$view->tag = 'refstats';
+$view->base_table = 'node';
+$view->human_name = 'Summary Stats (calc) v5b';
+$view->core = 7;
+$view->api_version = '3.0-alpha1';
+$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+/* Display: Master */
+$handler = $view->new_display('default', 'Master', 'default');
+$handler->display->display_options['title'] = 'Reports';
+$handler->display->display_options['access']['type'] = 'role';
+$handler->display->display_options['access']['role'] = array(
+  5 => '5',
+  7 => '7',
+);
+$handler->display->display_options['cache']['type'] = 'none';
+$handler->display->display_options['query']['type'] = 'views_query';
+$handler->display->display_options['query']['options']['query_comment'] = FALSE;
+$handler->display->display_options['exposed_form']['type'] = 'basic';
+$handler->display->display_options['pager']['type'] = 'full';
+$handler->display->display_options['pager']['options']['items_per_page'] = '0';
+$handler->display->display_options['pager']['options']['offset'] = '0';
+$handler->display->display_options['pager']['options']['id'] = '0';
+$handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+$handler->display->display_options['style_plugin'] = 'table';
+$handler->display->display_options['style_options']['columns'] = array(
+  'field_ref_txn_datetime' => 'field_ref_txn_datetime',
+  'field_ref_txn_dir_person' => 'field_ref_txn_dir_person',
+  'field_ref_txn_dir_phone' => 'field_ref_txn_dir_phone',
+  'field_ref_txn_dir_email' => 'field_ref_txn_dir_email',
+  'field_ref_txn_dir_chat' => 'field_ref_txn_dir_chat',
+  'field_ref_txn_dir_mail' => 'field_ref_txn_dir_mail',
+  'field_ref_txn_ref_person' => 'field_ref_txn_ref_person',
+  'field_ref_txn_ref_phone' => 'field_ref_txn_ref_phone',
+  'field_ref_txn_ref_email' => 'field_ref_txn_ref_email',
+  'field_ref_txn_ref_chat' => 'field_ref_txn_ref_chat',
+  'field_ref_txn_ref_mail' => 'field_ref_txn_ref_mail',
+  'field_ref_txn_tech_person' => 'field_ref_txn_tech_person',
+  'field_ref_txn_tech_phone' => 'field_ref_txn_tech_phone',
+  'field_ref_txn_tech_email' => 'field_ref_txn_tech_email',
+  'field_ref_txn_tech_chat' => 'field_ref_txn_tech_chat',
+  'field_ref_txn_tech_mail' => 'field_ref_txn_tech_mail',
+  'field_ref_txn_docs_person' => 'field_ref_txn_docs_person',
+  'field_ref_txn_docs_phone' => 'field_ref_txn_docs_phone',
+  'field_ref_txn_docs_email' => 'field_ref_txn_docs_email',
+  'field_ref_txn_docs_chat' => 'field_ref_txn_docs_chat',
+  'field_ref_txn_docs_mail' => 'field_ref_txn_docs_mail',
+);
+$handler->display->display_options['style_options']['default'] = '-1';
+$handler->display->display_options['style_options']['info'] = array(
+  'field_ref_txn_datetime' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_dir_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_dir_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_dir_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_dir_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_dir_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_ref_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_ref_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_ref_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_ref_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_ref_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_tech_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_tech_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_tech_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_tech_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_tech_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_docs_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_docs_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_docs_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_docs_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+  'field_ref_txn_docs_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+  ),
+);
+$handler->display->display_options['style_options']['override'] = 1;
+$handler->display->display_options['style_options']['sticky'] = 0;
+$handler->display->display_options['style_options']['empty_table'] = 0;
+/* Field: Content: Date and Time */
+$handler->display->display_options['fields']['field_ref_txn_datetime']['id'] = 'field_ref_txn_datetime';
+$handler->display->display_options['fields']['field_ref_txn_datetime']['table'] = 'field_data_field_ref_txn_datetime';
+$handler->display->display_options['fields']['field_ref_txn_datetime']['field'] = 'field_ref_txn_datetime';
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_datetime']['settings'] = array(
+  'format_type' => 'short',
+  'fromto' => 'both',
+  'multiple_number' => '',
+  'multiple_from' => '',
+  'multiple_to' => '',
+  'show_repeat_rule' => 'show',
+);
+$handler->display->display_options['fields']['field_ref_txn_datetime']['field_api_classes'] = 0;
+/* Field: Content: Directional/In-Person */
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['id'] = 'field_ref_txn_dir_person';
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['table'] = 'field_data_field_ref_txn_dir_person';
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['field'] = 'field_ref_txn_dir_person';
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_dir_person']['field_api_classes'] = 0;
+/* Field: Content: Directional/Phone */
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['id'] = 'field_ref_txn_dir_phone';
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['table'] = 'field_data_field_ref_txn_dir_phone';
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['field'] = 'field_ref_txn_dir_phone';
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_dir_phone']['field_api_classes'] = 0;
+/* Field: Content: Directional/Email */
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['id'] = 'field_ref_txn_dir_email';
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['table'] = 'field_data_field_ref_txn_dir_email';
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['field'] = 'field_ref_txn_dir_email';
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_dir_email']['field_api_classes'] = 0;
+/* Field: Content: Directional/Chat */
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['id'] = 'field_ref_txn_dir_chat';
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['table'] = 'field_data_field_ref_txn_dir_chat';
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['field'] = 'field_ref_txn_dir_chat';
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_dir_chat']['field_api_classes'] = 0;
+/* Field: Content: Directional/Mail */
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['id'] = 'field_ref_txn_dir_mail';
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['table'] = 'field_data_field_ref_txn_dir_mail';
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['field'] = 'field_ref_txn_dir_mail';
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_dir_mail']['field_api_classes'] = 0;
+/* Field: Content: Reference/In-Person */
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['id'] = 'field_ref_txn_ref_person';
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['table'] = 'field_data_field_ref_txn_ref_person';
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['field'] = 'field_ref_txn_ref_person';
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_ref_person']['field_api_classes'] = 0;
+/* Field: Content: Reference/Phone */
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['id'] = 'field_ref_txn_ref_phone';
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['table'] = 'field_data_field_ref_txn_ref_phone';
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['field'] = 'field_ref_txn_ref_phone';
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_ref_phone']['field_api_classes'] = 0;
+/* Field: Content: Reference/Email */
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['id'] = 'field_ref_txn_ref_email';
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['table'] = 'field_data_field_ref_txn_ref_email';
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['field'] = 'field_ref_txn_ref_email';
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_ref_email']['field_api_classes'] = 0;
+/* Field: Content: Reference/Chat */
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['id'] = 'field_ref_txn_ref_chat';
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['table'] = 'field_data_field_ref_txn_ref_chat';
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['field'] = 'field_ref_txn_ref_chat';
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_ref_chat']['field_api_classes'] = 0;
+/* Field: Content: Reference/Mail */
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['id'] = 'field_ref_txn_ref_mail';
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['table'] = 'field_data_field_ref_txn_ref_mail';
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['field'] = 'field_ref_txn_ref_mail';
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_ref_mail']['field_api_classes'] = 0;
+/* Field: Content: Technical/In-Person */
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['id'] = 'field_ref_txn_tech_person';
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['table'] = 'field_data_field_ref_txn_tech_person';
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['field'] = 'field_ref_txn_tech_person';
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_tech_person']['field_api_classes'] = 0;
+/* Field: Content: Technical/Phone */
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['id'] = 'field_ref_txn_tech_phone';
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['table'] = 'field_data_field_ref_txn_tech_phone';
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['field'] = 'field_ref_txn_tech_phone';
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_tech_phone']['field_api_classes'] = 0;
+/* Field: Content: Technical/Email */
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['id'] = 'field_ref_txn_tech_email';
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['table'] = 'field_data_field_ref_txn_tech_email';
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['field'] = 'field_ref_txn_tech_email';
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_tech_email']['field_api_classes'] = 0;
+/* Field: Content: Technical/Chat */
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['id'] = 'field_ref_txn_tech_chat';
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['table'] = 'field_data_field_ref_txn_tech_chat';
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['field'] = 'field_ref_txn_tech_chat';
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_tech_chat']['field_api_classes'] = 0;
+/* Field: Content: Technical/Mail */
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['id'] = 'field_ref_txn_tech_mail';
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['table'] = 'field_data_field_ref_txn_tech_mail';
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['field'] = 'field_ref_txn_tech_mail';
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_tech_mail']['field_api_classes'] = 0;
+/* Field: Content: Docs/In-Person */
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['id'] = 'field_ref_txn_docs_person';
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['table'] = 'field_data_field_ref_txn_docs_person';
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['field'] = 'field_ref_txn_docs_person';
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_docs_person']['field_api_classes'] = 0;
+/* Field: Content: Docs/Phone */
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['id'] = 'field_ref_txn_docs_phone';
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['table'] = 'field_data_field_ref_txn_docs_phone';
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['field'] = 'field_ref_txn_docs_phone';
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_docs_phone']['field_api_classes'] = 0;
+/* Field: Content: Docs/Email */
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['id'] = 'field_ref_txn_docs_email';
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['table'] = 'field_data_field_ref_txn_docs_email';
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['field'] = 'field_ref_txn_docs_email';
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_docs_email']['field_api_classes'] = 0;
+/* Field: Content: Docs/Chat */
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['id'] = 'field_ref_txn_docs_chat';
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['table'] = 'field_data_field_ref_txn_docs_chat';
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['field'] = 'field_ref_txn_docs_chat';
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_docs_chat']['field_api_classes'] = 0;
+/* Field: Content: Docs/Mail */
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['id'] = 'field_ref_txn_docs_mail';
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['table'] = 'field_data_field_ref_txn_docs_mail';
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['field'] = 'field_ref_txn_docs_mail';
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['alter_text'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['make_link'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['absolute'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['external'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['replace_spaces'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['trim_whitespace'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['nl2br'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['word_boundary'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['ellipsis'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['strip_tags'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['trim'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['alter']['html'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['element_label_colon'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['element_default_classes'] = 1;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['hide_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['empty_zero'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['hide_alter_empty'] = 0;
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['settings'] = array(
+  'thousand_separator' => ' ',
+  'prefix_suffix' => 1,
+);
+$handler->display->display_options['fields']['field_ref_txn_docs_mail']['field_api_classes'] = 0;
+/* Sort criterion: Content: Post date */
+$handler->display->display_options['sorts']['created']['id'] = 'created';
+$handler->display->display_options['sorts']['created']['table'] = 'node';
+$handler->display->display_options['sorts']['created']['field'] = 'created';
+$handler->display->display_options['sorts']['created']['order'] = 'DESC';
+/* Filter criterion: Content: Published or admin */
+$handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+$handler->display->display_options['filters']['status_extra']['table'] = 'node';
+$handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+$handler->display->display_options['filters']['status_extra']['group'] = 0;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'ref_txn' => 'ref_txn',
+);
+$handler->display->display_options['filters']['type']['group'] = 0;
+/* Filter criterion: Content: Branch or Unit (field_ref_txn_tax_branch) */
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['id'] = 'field_ref_txn_tax_branch_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['table'] = 'field_data_field_ref_txn_tax_branch';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['field'] = 'field_ref_txn_tax_branch_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['group'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['exposed'] = TRUE;
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['operator_id'] = 'field_ref_txn_tax_branch_tid_op';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['label'] = 'Branch or Unit';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['use_operator'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['operator'] = 'field_ref_txn_tax_branch_tid_op';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['identifier'] = 'field_ref_txn_tax_branch_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['multiple'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['expose']['reduce'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['reduce_duplicates'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['type'] = 'select';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['vocabulary'] = 'branch_or_unit';
+$handler->display->display_options['filters']['field_ref_txn_tax_branch_tid']['error_message'] = 0;
+/* Filter criterion: Content: Service Point (field_ref_txn_tax_sp) */
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['id'] = 'field_ref_txn_tax_sp_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['table'] = 'field_data_field_ref_txn_tax_sp';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['field'] = 'field_ref_txn_tax_sp_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['group'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['exposed'] = TRUE;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['operator_id'] = 'field_ref_txn_tax_sp_tid_op';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['label'] = 'Service Point';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['use_operator'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['operator'] = 'field_ref_txn_tax_sp_tid_op';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['identifier'] = 'field_ref_txn_tax_sp_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['multiple'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['expose']['reduce'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['reduce_duplicates'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['type'] = 'select';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['vocabulary'] = 'service_point';
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['hierarchy'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_sp_tid']['error_message'] = 0;
+/* Filter criterion: Content: Patron Status (field_ref_txn_tax_patron) */
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['id'] = 'field_ref_txn_tax_patron_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['table'] = 'field_data_field_ref_txn_tax_patron';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['field'] = 'field_ref_txn_tax_patron_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['group'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['exposed'] = TRUE;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['operator_id'] = 'field_ref_txn_tax_patron_tid_op';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['label'] = 'Patron Status';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['use_operator'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['operator'] = 'field_ref_txn_tax_patron_tid_op';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['identifier'] = 'field_ref_txn_tax_patron_tid';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['multiple'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['expose']['reduce'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['reduce_duplicates'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['type'] = 'select';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['vocabulary'] = 'patron_status';
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['hierarchy'] = 1;
+$handler->display->display_options['filters']['field_ref_txn_tax_patron_tid']['error_message'] = 0;
+/* Filter criterion: Content: Date and Time (field_ref_txn_datetime) */
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['id'] = 'field_ref_txn_datetime_value';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['table'] = 'field_data_field_ref_txn_datetime';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['field'] = 'field_ref_txn_datetime_value';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['operator'] = 'between';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['group'] = 0;
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['exposed'] = TRUE;
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['expose']['operator_id'] = 'field_ref_txn_datetime_value_op';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['expose']['label'] = 'Date';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['expose']['operator'] = 'field_ref_txn_datetime_value_op';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['expose']['identifier'] = 'field_ref_txn_datetime_value';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['expose']['multiple'] = FALSE;
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['form_type'] = 'date_popup';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['default_date'] = 'now -1 year';
+$handler->display->display_options['filters']['field_ref_txn_datetime_value']['default_to_date'] = 'now';
+
+/* Display: Page */
+$handler = $view->new_display('page', 'Page', 'page');
+$handler->display->display_options['path'] = 'reports-v5';
+
+/* Display: Data export */
+$handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+$handler->display->display_options['pager']['type'] = 'some';
+$handler->display->display_options['pager']['options']['items_per_page'] = '0';
+$handler->display->display_options['pager']['options']['offset'] = '0';
+$handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+$handler->display->display_options['style_options']['provide_file'] = 1;
+$handler->display->display_options['style_options']['filename'] = '%view-%exposed-%timestamp-full.xls';
+$handler->display->display_options['style_options']['parent_sort'] = 1;
+$handler->display->display_options['path'] = 'reports-v5/xls';
+$handler->display->display_options['displays'] = array(
+  'page' => 'page',
+  'default' => 0,
+);
+
+/* Display: Calc */
+$handler = $view->new_display('page', 'Calc', 'page_1');
+$handler->display->display_options['defaults']['style_plugin'] = FALSE;
+$handler->display->display_options['style_plugin'] = 'views_calc';
+$handler->display->display_options['style_options']['columns'] = array(
+  'field_ref_txn_datetime' => 'field_ref_txn_datetime',
+  'field_ref_txn_dir_person' => 'field_ref_txn_dir_person',
+  'field_ref_txn_dir_phone' => 'field_ref_txn_dir_phone',
+  'field_ref_txn_dir_email' => 'field_ref_txn_dir_email',
+  'field_ref_txn_dir_chat' => 'field_ref_txn_dir_chat',
+  'field_ref_txn_dir_mail' => 'field_ref_txn_dir_mail',
+  'field_ref_txn_ref_person' => 'field_ref_txn_ref_person',
+  'field_ref_txn_ref_phone' => 'field_ref_txn_ref_phone',
+  'field_ref_txn_ref_email' => 'field_ref_txn_ref_email',
+  'field_ref_txn_ref_chat' => 'field_ref_txn_ref_chat',
+  'field_ref_txn_ref_mail' => 'field_ref_txn_ref_mail',
+  'field_ref_txn_tech_person' => 'field_ref_txn_tech_person',
+  'field_ref_txn_tech_phone' => 'field_ref_txn_tech_phone',
+  'field_ref_txn_tech_email' => 'field_ref_txn_tech_email',
+  'field_ref_txn_tech_chat' => 'field_ref_txn_tech_chat',
+  'field_ref_txn_tech_mail' => 'field_ref_txn_tech_mail',
+  'field_ref_txn_docs_person' => 'field_ref_txn_docs_person',
+  'field_ref_txn_docs_phone' => 'field_ref_txn_docs_phone',
+  'field_ref_txn_docs_email' => 'field_ref_txn_docs_email',
+  'field_ref_txn_docs_chat' => 'field_ref_txn_docs_chat',
+  'field_ref_txn_docs_mail' => 'field_ref_txn_docs_mail',
+);
+$handler->display->display_options['style_options']['default'] = '-1';
+$handler->display->display_options['style_options']['info'] = array(
+  'field_ref_txn_datetime' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 0,
+    'calc' => array(),
+  ),
+  'field_ref_txn_dir_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_dir_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_dir_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_dir_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_dir_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_ref_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_ref_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_ref_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_ref_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_ref_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_tech_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_tech_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'COUNT' => 'COUNT',
+    ),
+  ),
+  'field_ref_txn_tech_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_tech_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_tech_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_docs_person' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_docs_phone' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_docs_email' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_docs_chat' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+  'field_ref_txn_docs_mail' => array(
+    'sortable' => 0,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'has_calc' => 1,
+    'calc' => array(
+      'SUM' => 'SUM',
+    ),
+  ),
+);
+$handler->display->display_options['style_options']['override'] = 1;
+$handler->display->display_options['style_options']['sticky'] = 0;
+$handler->display->display_options['style_options']['empty_table'] = 0;
+$handler->display->display_options['style_options']['detailed_values'] = '1';
+$handler->display->display_options['defaults']['style_options'] = FALSE;
+$handler->display->display_options['defaults']['row_plugin'] = FALSE;
+$handler->display->display_options['defaults']['row_options'] = FALSE;
+$handler->display->display_options['path'] = 'reports-v5-calc';
