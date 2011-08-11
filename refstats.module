@@ -34,8 +34,10 @@ function refstats_form_alter(&$form, &$form_state, $form_id) {
 function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
   // add the click-to-increment functionality
 //  $form_state['redirect'] = url('node/add/ref-txn');
+//  kpr($form);
 //  kpr($form_state);
   //tweak input field widths
+  unset($form['field_ref_txn_datetime']['und'][0]['all-day']);
   $form['field_ref_txn_dir_person']['und'][0]['value']['#size'] = 2;
   $form['field_ref_txn_dir_person']['und'][0]['value']['#maxlength'] = 2;
   $form['field_ref_txn_dir_phone']['und'][0]['value']['#size'] = 2;
@@ -116,7 +118,7 @@ function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
     '#weight' => 10,
     '#prefix' => '<span class="element-hidden" id="reset-button-wrapper">',
     '#suffix' => '</span>',
-    '#attributes' => array('onclick' => 'this.form.reset(); return false;'),
+    '#attributes' => array('onclick' => "this.form.reset(); return false;"),
   );
 //  kpr($form);
 }
@@ -129,7 +131,7 @@ function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
 function refstats_form_ref_txn_month_node_form_alter(&$form, &$form_state, $form_id) {
   // add the click-to-increment functionality
 //  $form_state['redirect'] = url('node/add/ref-txn');
-  kpr($form);
+//  kpr($form);
   //tweak input field widths
   $form['field_ref_txn_dir_person']['und'][0]['value']['#size'] = 2;
   $form['field_ref_txn_dir_person']['und'][0]['value']['#maxlength'] = 2;
@@ -253,3 +255,13 @@ function refstats_custom_tour_submit(&$form, &$form_state) {
   $form_state['redirect'] = 'add/tour';
 }
 
+/**
+ * Implementation of hook_views_api().
+ */
+function refstats_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'refstats'),
+//    'path' => drupal_get_path('module', 'refstats') . '/views',
+  );
+}

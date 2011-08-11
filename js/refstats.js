@@ -2,6 +2,15 @@
 
 (function($) {
 
+/////////////////////////////////////
+// Make the menu link a popup window
+/////////////////////////////////////
+  $(document).ready(function() {
+    $('.menu-1435 a').addClass('popupwindow');
+    $('.menu-1435 a').attr('rel','refstatsPopup');
+    $('.menu-1435 a').removeClass('active');
+  });
+
 ////////////////////////////////////////////////////////////
 // Increment the number in the input box by +1 on each click
 ////////////////////////////////////////////////////////////
@@ -66,7 +75,7 @@
          scrollbars:0,
          status:0,
          resizable:1,
-         left:720,
+         left:2400,
          top:0,
 //         not working
 //         onUnload:refstatsNopopup
@@ -115,9 +124,15 @@
       $('#node_ref_txn_form_group_ref_txn_dir').prepend('<div class="popup-row-label">Directional</div>');
       $('#node_ref_txn_form_group_ref_txn_ref').prepend('<div class="popup-row-label">Reference</div>');
       $('#node_ref_txn_form_group_ref_txn_tech').prepend('<div class="popup-row-label">Technical</div>');
-      $('#node_ref_txn_form_group_ref_txn_docs').prepend('<div class="popup-row-label">Docs</div>');
+      $('#node_ref_txn_form_group_ref_txn_docs').prepend('<div class="popup-row-label">Gov Docs</div>');
+      $('#field-ref-txn-dir-person-add-more-wrapper').attr('title', 'In-Person');
+      $('#field-ref-txn-dir-phone-add-more-wrapper').attr('title', 'Phone');
+      $('#field-ref-txn-dir-email-add-more-wrapper').attr('title', 'Email');
+      $('#field-ref-txn-dir-chat-add-more-wrapper').attr('title', 'Chat');
+      $('#field-ref-txn-dir-mail-add-more-wrapper').attr('title', 'Mail');
     }
   });
+
 
 
 

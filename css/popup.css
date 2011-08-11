@@ -6,7 +6,6 @@ body {
   font-size: x-small;
   width: 330px;
   max-width: 330px;
-  background-color: #EAF1F3;
 }
 
 fieldset legend {
@@ -16,6 +15,7 @@ fieldset legend {
 #page-wrapper {
   margin-top: -20px;
   max-width: 330px;
+  background-color: #EAF1F3;
 }
 
 #page {
@@ -30,12 +30,24 @@ fieldset legend {
   display: none;
 }
 
+#node_ref_txn_form_group_ref_txn_ref input, #node_ref_txn_form_group_ref_txn_tech input, #node_ref_txn_form_group_ref_txn_docs input {
+  margin-right: 5px;
+}
+
 .field-type-taxonomy-term-reference select {
   font-size: 9px;
 }
 
 .form-item-field-ref-txn-datetime-und-0-value label {
   display: none;
+}
+
+#field-ref-txn-datetime-add-more-wrapper select {
+  font-size: 9px;
+}
+
+#field-ref-txn-datetime-add-more-wrapper .fieldset-wrapper {
+  margin-top: 0;
 }
 
 .form-item-field-ref-txn-tax-branch-und label {
@@ -55,7 +67,30 @@ fieldset legend {
 }
 
 #edit-field-ref-txn-tax-branch {
+/*  use -10px for top margin if using date popup date/timepicker */
   margin: -10px 0 0 0;
+/* use -2px for top margin if using select list date/timepicker */
+/*  margin: -2px 0 0 0; */
+}
+
+#edit-field-ref-txn-datetime {
+  width: 220px;
+  padding: 0;
+  margin: 0;
+}
+
+#edit-field-ref-txn-datetime .container-inline-date {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#edit-field-ref-txn-datetime .container-inline-date .date-padding {
+  padding: 3px;
+}
+
+#edit-field-ref-txn-datetime .description {
+  display: none;
 }
 
 #node_ref_txn_form_group_ref_txn_dir .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_ref .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_tech .fieldset-wrapper, #node_ref_txn_form_group_ref_txn_docs .fieldset-wrapper {
@@ -63,7 +98,7 @@ fieldset legend {
 }
 
 #node_ref_txn_form_group_ref_txn_dir, #node_ref_txn_form_group_ref_txn_ref, #node_ref_txn_form_group_ref_txn_tech, #node_ref_txn_form_group_ref_txn_docs {
-  width: 250px;
+  width: 290px;
   padding-bottom: 0;
   margin-top: -10px;
 }
