@@ -1,6 +1,8 @@
 //$Id$
 
+
 (function($) {
+
 
 /////////////////////////////////////
 // Make the menu link a popup window
@@ -20,8 +22,10 @@
 			if (!oldValue) {
 				var oldValue = 0;
 			}
-			var newVal = parseFloat(oldValue) + 1;
-			$(this).val(newVal);
+      if (oldValue < 99) {
+  			var newVal = parseFloat(oldValue) + 1;
+	  		$(this).val(newVal);
+	  	}
 		});
 	});
 
@@ -69,7 +73,7 @@
 	  var profiles = {
      refstatsPopup:
        {
-         height:400,
+         height:500,
          width:300,
          toolbar:0,
          scrollbars:0,
@@ -118,7 +122,6 @@
     var refstatsPopup = window.name;
 //    alert(refstatsPopup);
     if(refstatsPopup == "RefStatsPopup"){
-//      alert('hey ma, it works!');
       $('head').append('<link rel="stylesheet" href="/sites/all/modules/custom/refstats/css/popup.css" type="text/css" />');
       $('head').append('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">');
       $('#node_ref_txn_form_group_ref_txn_dir').prepend('<div class="popup-row-label">Directional</div>');
@@ -130,6 +133,9 @@
       $('#field-ref-txn-dir-email-add-more-wrapper').attr('title', 'Email');
       $('#field-ref-txn-dir-chat-add-more-wrapper').attr('title', 'Chat');
       $('#field-ref-txn-dir-mail-add-more-wrapper').attr('title', 'Mail');
+      if (top.location != self.location) {
+        top.location = self.location;
+      }
     }
   });
 

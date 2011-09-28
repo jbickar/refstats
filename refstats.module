@@ -5,9 +5,14 @@
 drupal_add_js(drupal_get_path('module', 'refstats') .'/js/jquery.cookie.js');
 drupal_add_js(drupal_get_path('module', 'refstats') .'/js/jquery.popupwindow.js');
 drupal_add_js(drupal_get_path('module', 'refstats') .'/js/refstats.js');
+//drupal_add_js(drupal_get_path('module', 'refstats') .'/js/reset.js');
 
 function refstats_form_alter(&$form, &$form_state, $form_id) {
 //  kpr($form);
+  if($form_id == 'meyer_txn_node_form') {
+    // see http://drupal.org/node/1074616#comment-4218548 for source
+    $form['actions']['submit']['#submit'][] = 'refstats_custom_meyer_txn_submit';
+  }
   if($form_id == 'ref_txn_node_form') {
 //    kpr($form_state);
 //    dpm($form_id);
@@ -118,7 +123,10 @@ function refstats_form_ref_txn_node_form_alter(&$form, &$form_state, $form_id) {
     '#weight' => 10,
     '#prefix' => '<span class="element-hidden" id="reset-button-wrapper">',
     '#suffix' => '</span>',
+//    '#prefix' => '<span class="element-hidden" id="reset-button-wrapper"><a href="/add/reference-statistics">',
+//    '#suffix' => '</a></span>',
     '#attributes' => array('onclick' => "this.form.reset(); return false;"),
+//    '#attributes' => array('onclick' => "refstatsReset(); return false;"),
   );
 //  kpr($form);
 }
@@ -247,6 +255,12 @@ function refstats_custom_ref_txn_submit(&$form, &$form_state) {
   $form_state['redirect'] = 'add/reference-statistics';
 }
 
+function refstats_custom_meyer_txn_submit(&$form, &$form_state) {
+// the reason this wasn't working is that I failed to pass $form_state by reference
+//  kpr($form_state);
+  $form_state['redirect'] = 'add/meyer-statistics';
+}
+
 function refstats_custom_ref_txn_month_submit(&$form, &$form_state) {
   $form_state['redirect'] = 'add/monthly-reference-statistics';
 }
@@ -264,4 +278,18 @@ function refstats_views_api() {
     'path' => drupal_get_path('module', 'refstats'),
 //    'path' => drupal_get_path('module', 'refstats') . '/views',
   );
+}
+
+/**
+ * Implementation of hook_views_post_render().
+ */
+function refstats_views_post_render(&$view, &$output, &$cache) {
+//  kpr($view);
+}
+
+/**
+ * Implementation of hook_views_pre_render().
+ */
+function refstats_views_pre_render(&$view) {
+ // kpr($view);
 }

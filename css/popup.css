@@ -8,7 +8,12 @@ body {
   max-width: 330px;
 }
 
+.container-inline-date .form-item input {
+  width: 80px;
+}
+
 fieldset legend {
+/* enable the following line if you don't want collapsible fieldsets */
   display: none;
 }
 
@@ -110,4 +115,8 @@ fieldset legend {
 .popup-row-label {
   float: left;
   width: 60px;
+}
+
+.ui-timepicker {
+  font-size: 9px;
 }
