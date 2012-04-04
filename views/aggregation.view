@@ -1,17 +1,17 @@
 <?php
 $view = new view;
 $view->name = 'aggregation';
-$view->description = '';
-$view->tag = 'default';
+$view->description = 'Aggregated statistics with exposed filters for limiting range';
+$view->tag = 'reports';
 $view->base_table = 'node';
-$view->human_name = 'Aggregation Test';
+$view->human_name = 'Reports';
 $view->core = 7;
 $view->api_version = '3.0';
 $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
 /* Display: Master */
 $handler = $view->new_display('default', 'Master', 'default');
-$handler->display->display_options['title'] = 'Aggregation Test';
+$handler->display->display_options['title'] = 'Reports';
 $handler->display->display_options['group_by'] = TRUE;
 $handler->display->display_options['access']['type'] = 'role';
 $handler->display->display_options['access']['role'] = array(
@@ -668,7 +668,7 @@ $handler->display->display_options['filters']['date_filter']['date_fields'] = ar
 
 /* Display: Page */
 $handler = $view->new_display('page', 'Page', 'page');
-$handler->display->display_options['path'] = 'aggregation';
+$handler->display->display_options['path'] = 'reports/reference-statistics';
 
 /* Display: Data export */
 $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
@@ -677,9 +677,8 @@ $handler->display->display_options['pager']['options']['offset'] = '0';
 $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
 $handler->display->display_options['style_options']['provide_file'] = 1;
 $handler->display->display_options['style_options']['parent_sort'] = 1;
-$handler->display->display_options['path'] = 'aggregation/xls';
+$handler->display->display_options['path'] = 'reports/reference-statistics/xls';
 $handler->display->display_options['displays'] = array(
   'page' => 'page',
   'default' => 0,
 );
-
